@@ -256,8 +256,30 @@
 
 主要仿照美团，需要几个表，每个表有哪几个属性
 
+- 关于会员模块
 
+  都是userID没问题，username用户名限制一下字母数字不可有空格乱七八糟字符之类的
 
+  但是不能重复，然后注册只能普通用户注册，商家入驻需要联系我们
+
+  一张表 userID（auto Increment），username（普通用户注册只能用手机号，并且发短信验证码）type password，一张表 管登录 管跳转 登录查这一张表就可以了，店铺名我们自分配的（根据这个type，去不同的表取信息）
+
+  - userID,username（fk）,password,type
+
+  - username（pk） ，NickName，Sex，Age ，Email Phone（默认和UserName一致）， registerDate ，LastLoginDate LastLoginDevice or Location，UserType（指VIP之类的）， VIPID，Identity（身份信息）
+  - username（pk），店铺名称，店铺地址，店铺营业执照信息（社会统一信用代码），
+  - 管理员不需要表，根据type直接登录就好，因此 type很关键 不能留能修改type的接口 
+  - VIPID...other必要信息 可以补充一下 比如积分
+  - addressID userID（fk） name phone Address （一对多的表）userID userName为索引都可以
+
+- 关于商品模块
+
+  商品目前只有一种 
+
+  - 商品ID（pk），username（店铺名 fk），商品name，sex，品牌brand，尺码，颜色，货号，风格，厚薄，适用场景，版型，衣长,resource_URL
+  - clothesID（pk），商品ID（fk），color，size, stock，price，resource_URL
+  - commentID(pk),商品ID（fk），订单ID，date，
+  - 订单ID，clothesID（fk），商品名（fk）用户名，店铺名，数量，单价，价格
 
 
 #### 模块划分
