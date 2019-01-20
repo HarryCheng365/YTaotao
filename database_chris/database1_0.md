@@ -31,7 +31,7 @@
 
 用户表修改信息触发器：user_trg_aftupdate;
 
-插入检测触发器：<tablename>_trg_befinsert；等
+插入检测触发器：tablename_trg_befinsert；等
 	
 约束命名与触发器类似，采用字母和下划线组成，统一小写。格式为表名+属性名+类型。
 
@@ -309,6 +309,7 @@ goods
 clothes_set
 
 (
+
 	clothesID(PK),
 	
 	goodsID(FK) REFERENCES goods(goodsID),
@@ -354,6 +355,7 @@ order
 order_comment	
 
 (
+
 	commentID(PK),
 	
 	orderID(FK), REFERENCES order(orderID),
@@ -367,6 +369,7 @@ order_comment
 business_comment
 
 (
+
 	commentID(PK),
 	
 	userID(FK), REFERENCES users_list(userID),
@@ -380,6 +383,7 @@ business_comment
 shopping_cart
 
 (
+
 	cartID(PK),
 	
 	userID(FK), REFERENCES users_list(userID),
